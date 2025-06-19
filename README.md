@@ -1,7 +1,7 @@
 # Prometheus SNMP Exporter
 
 This exporter is the recommended way to expose SNMP data in a format which
-Prometheus can ingest.
+Prometheus can ingest.（这个exporter是以prometheus公开推荐的方式获取数据的）
 
 To simply get started, it's recommended to use the `if_mib` module with
 switches, access points, or routers using the `public_v2` auth module,
