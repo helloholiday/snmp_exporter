@@ -1,7 +1,8 @@
 # Prometheus SNMP Exporter
 
 This exporter is the recommended way to expose SNMP data in a format which
-Prometheus can ingest.（这个exporter是以prometheus公开推荐的方式获取数据的）
+Prometheus can ingest.
+（这个exporter是以prometheus公开推荐的方式获取数据的）
 
 To simply get started, it's recommended to use the `if_mib` module with
 switches, access points, or routers using the `public_v2` auth module,
@@ -10,12 +11,13 @@ which should be a read-only access community on the target device.
 Note, community strings in SNMP are not considered secrets, as they are sent
 unencrypted in SNMP v1 and v2c. For secure access, SNMP v3 is required.
 
-# Concepts（概念）
+# Concepts
+（概念）
 
 While SNMP uses a hierarchical data structure and Prometheus uses an
 n-dimensional matrix, the two systems map perfectly, and without the need
 to walk through data by hand. `snmp_exporter` maps the data for you.
-虽然snmp是层次结构的，而prometheus是N维矩阵，但是两者是可以完美衔接的。
+（虽然snmp是层次结构的，而prometheus是N维矩阵，但是两者是可以完美衔接的。）
 
 ## Prometheus
 
@@ -33,6 +35,7 @@ OIDs, the names in parentheses are the names from a MIB, in this case
 [IF-MIB](http://www.oidview.com/mibs/0/IF-MIB.html).
 
 ## Mapping
+（映射）
 
 Given a device with an interface at number 2, a partial `snmpwalk` return looks
 like:
@@ -52,12 +55,15 @@ ifHCOutOctets{ifAlias="",ifDescr="eth0",ifIndex="2",ifName="eth0"} 1000
 ```
 
 # Scaling
+（缩放）
 
 A single instance of `snmp_exporter` can be run for thousands of devices.
 
 # Usage
+（用法）
 
 ## Installation
+（安装）
 
 Binaries can be downloaded from the [Github
 releases](https://github.com/prometheus/snmp_exporter/releases) page and need no
@@ -66,6 +72,7 @@ special installation.
 We also provide a sample [systemd unit file](examples/systemd/snmp_exporter.service).
 
 ## Running
+（运行）
 
 Start `snmp_exporter` as a daemon or from CLI:
 
@@ -128,6 +135,7 @@ Prometheus Example:
 ```
 
 ## Configuration
+（配置）
 
 The default configuration file name is `snmp.yml` and should not be edited
 by hand. If you need to change it, see
@@ -144,6 +152,7 @@ The `--config.expand-environment-variables` parameter allows passing environment
 Duplicate `module` or `auth` entries are treated as invalid and can not be loaded.
 
 ## Prometheus Configuration
+（Prometheus配置）
 
 The URL params `target`, `auth`, and `module` can be controlled through relabelling.
 
@@ -217,6 +226,7 @@ Use the generator if you need to customize which objects are walked or use
 non-public MIBs.
 
 ## Large counter value handling
+（大规模计数值处理）
 
 In order to provide accurate counters for large Counter64 values, the exporter
 will automatically wrap the value every 2^53 to avoid 64-bit float rounding.
@@ -227,11 +237,14 @@ If you need to disable this feature for non-Prometheus systems, use the
 command line flag `--no-snmp.wrap-large-counters`.
 
 # Once you have it running
+（马上开启运行）
 
 It can be opaque to get started with all this, but in our own experience,
 snmp_exporter is honestly the best way to interact with SNMP. To make it
 easier for others, please consider contributing back your configurations to
 us.
+（刚开始接触这一切可能会有些困难，但根据我们的实际经验来看，“snmp_exporter”确实是与 SNMP 进行交互的最佳方式。为了方便其他人使用，建议您将您的配置信息回馈给我们。）
 `snmp.yml` config should be accompanied by generator config.
 For your dashboard, alerts, and recording rules, please consider
 contributing them to <https://github.com/prometheus/snmp_exporter/tree/main/snmp-mixin>.
+（‘snmp.yml’配置文件应与生成器配置文件一同提供。对于您的仪表板、警报和记录规则，请考虑将其贡献出来。）
