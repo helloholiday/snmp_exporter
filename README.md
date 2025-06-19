@@ -10,11 +10,12 @@ which should be a read-only access community on the target device.
 Note, community strings in SNMP are not considered secrets, as they are sent
 unencrypted in SNMP v1 and v2c. For secure access, SNMP v3 is required.
 
-# Concepts
+# Concepts（概念）
 
 While SNMP uses a hierarchical data structure and Prometheus uses an
 n-dimensional matrix, the two systems map perfectly, and without the need
 to walk through data by hand. `snmp_exporter` maps the data for you.
+虽然snmp是层次结构的，而prometheus是N维矩阵，但是两者是可以完美衔接的。
 
 ## Prometheus
 
